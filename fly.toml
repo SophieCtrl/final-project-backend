@@ -1,10 +1,10 @@
-# fly.toml app configuration file generated for server-misty-frost-653 on 2024-08-18T14:13:09+02:00
+# fly.toml app configuration file generated for nutritrack-backend on 2024-08-19T11:25:05+02:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'server-misty-frost-653'
-primary_region = 'ewr'
+app = 'nutritrack-backend'
+primary_region = 'cdg'
 
 [build]
 

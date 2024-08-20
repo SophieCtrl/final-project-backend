@@ -5,7 +5,8 @@
 The Supplement Tracker API is a backend service for managing users, supplements, and brands. It provides endpoints for user authentication, supplement management, and brand management.
 
 Complete project: https://github.com/SophieCtrl/supplement-organizer-app/
-Fromtend Part: https://github.com/SophieCtrl/final-project-frontend/
+Frontend Part: https://github.com/SophieCtrl/final-project-frontend/
+Deployed project: https://nutritrack-organizer.netlify.app/
 
 ## Installation
 
