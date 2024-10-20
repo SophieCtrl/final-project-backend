@@ -23,7 +23,7 @@ const app = express();
 // Middleware
 app.use(
   cors({
-    origin: process.env.ORIGIN,
+    origin: process.env.ORIGIN.replace(/\/$/, ""),
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
@@ -36,7 +36,7 @@ app.use(express.json());
 app.use(morgan("dev"));
 app.use(cookieParser());
 
-// Public Route - accessible to everyone
+// Public Route
 app.get("/", (req, res) => {
   res.send("Server is running");
 });
@@ -45,11 +45,6 @@ app.get("/", (req, res) => {
 app.use("/auth", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/supplements", supplementRoutes);
-
-// Basic route
-app.get("/", (req, res) => {
-  res.send("Server is running");
-});
 
 // Start server
 app.listen(PORT, "0.0.0.0", () => {
