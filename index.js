@@ -21,14 +21,15 @@ mongoose
 const app = express();
 
 // Middleware
-app.use(
-  cors({
-    origin: [process.env.ORIGIN],
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-    credentials: true,
-  })
-);
+// app.use(
+//   cors({
+//     origin: [process.env.ORIGIN],
+//     methods: ["GET", "POST", "PUT", "DELETE"],
+//     allowedHeaders: ["Content-Type", "Authorization"],
+//     credentials: true,
+//   })
+// );
+app.use(cors());
 app.options("*", cors()); // Enable preflight across-the-board
 console.log("CORS Origin:", process.env.ORIGIN); // Log the CORS origin
 
