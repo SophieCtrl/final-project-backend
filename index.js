@@ -3,7 +3,6 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const morgan = require("morgan");
 const cookieParser = require("cookie-parser");
-const bodyParser = require("body-parser");
 require("dotenv").config();
 const PORT = process.env.PORT || 3000;
 
@@ -30,6 +29,9 @@ app.use(
     credentials: true,
   })
 );
+app.options("*", cors()); // Enable preflight across-the-board
+console.log("CORS Origin:", process.env.ORIGIN); // Log the CORS origin
+
 app.use(express.json());
 app.use(morgan("dev"));
 app.use(cookieParser());
