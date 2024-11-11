@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const morgan = require("morgan");
 const cookieParser = require("cookie-parser");
+const path = require("path");
 require("dotenv").config();
 const PORT = process.env.PORT || 3000;
 
@@ -30,7 +31,6 @@ app.use(
   })
 );
 app.options("*", cors()); // Enable preflight across-the-board
-console.log("CORS Origin:", process.env.ORIGIN); // Log the CORS origin
 
 app.use(express.json());
 app.use(morgan("dev"));
@@ -45,6 +45,14 @@ app.get("/", (req, res) => {
 app.use("/auth", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/supplements", supplementRoutes);
+
+// Serve static files from the React app (after building)
+app.use(express.static(path.join(__dirname, "build")));
+
+// Fallback route for all other paths (send index.html for React Router to handle)
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "build", "index.html"));
+});
 
 // Start server
 app.listen(PORT, "0.0.0.0", () => {
